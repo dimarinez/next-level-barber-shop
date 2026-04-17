@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Barber Shop — Los Angeles, CA 90047</title>
+    <meta name="description" content="Next Level Barber Shop. Premium haircuts and grooming in Los Angeles 90047. Call (323) 947-3859.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric: #00d4ff;
+            --electric-dark: #0099cc;
+            --neon-green: #39ff14;
+            --dark: #0d0d0d;
+            --dark-card: #161616;
+            --dark-border: #222;
+            --white: #f0f0f0;
+            --gray: #777;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--white); background: var(--dark); }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(13,13,13,0.95); backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--dark-border);
+        }
+        .nav-brand {
+            font-family: 'Russo One', sans-serif;
+            color: var(--electric);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--white); text-decoration: none;
+            font-family: 'Rajdhani', sans-serif; font-weight: 600;
+            font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--electric); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 25px; height: 2px; background: var(--electric); }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--dark);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0,212,255,0.06) 0%, transparent 60%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+        .hero-tag {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--electric);
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 4.5rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--electric), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p { color: var(--gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.5rem; }
+        .btn {
+            display: inline-block; padding: 1rem 2.5rem;
+            text-decoration: none; font-family: 'Rajdhani', sans-serif;
+            font-weight: 700; font-size: 0.95rem; letter-spacing: 2px;
+            text-transform: uppercase; transition: all 0.3s; border: none;
+        }
+        .btn-neon {
+            background: linear-gradient(135deg, var(--electric), var(--electric-dark));
+            color: var(--dark);
+        }
+        .btn-neon:hover { box-shadow: 0 0 30px rgba(0,212,255,0.4); transform: translateY(-2px); }
+        .btn-outline {
+            border: 1.5px solid var(--electric);
+            color: var(--electric);
+            margin-left: 1rem;
+            background: transparent;
+        }
+        .btn-outline:hover { background: var(--electric); color: var(--dark); }
+
+        section { padding: 5rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-header h2 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.2rem; letter-spacing: 2px;
+        }
+        .section-header h2 span { color: var(--electric); }
+        .section-header p { color: var(--gray); margin-top: 0.5rem; }
+        .neon-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--electric), var(--neon-green)); margin: 0.75rem auto; }
+
+        .services { background: var(--dark-card); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--dark);
+            border: 1px solid var(--dark-border);
+            padding: 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: border-color 0.3s;
+        }
+        .service-card:hover { border-color: var(--electric); }
+        .service-card h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+        }
+        .service-card p { color: var(--gray); font-size: 0.8rem; margin-top: 0.3rem; }
+        .service-card .price {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem; color: var(--electric);
+        }
+
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 4px; max-width: 800px; margin: 0 auto;
+        }
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--dark-card), #222);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Rajdhani', sans-serif; color: var(--gray);
+            font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        .contact {
+            background: var(--dark-card);
+            text-align: center;
+        }
+        .contact h2 { font-family: 'Russo One', sans-serif; font-size: 2.2rem; letter-spacing: 2px; margin-bottom: 1rem; }
+        .contact p { color: var(--gray); margin-bottom: 2rem; }
+        .contact-grid {
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 2rem;
+        }
+        .contact-item .label {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--electric); font-size: 0.75rem;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 600;
+        }
+        .contact-item a { color: var(--white); text-decoration: none; font-size: 1.1rem; }
+        .contact-item a:hover { color: var(--electric); }
+
+        .map-container { max-width: 700px; margin: 0 auto; border: 1px solid var(--dark-border); }
+        .map-container iframe { width: 100%; height: 280px; border: none; filter: grayscale(1) invert(0.92) contrast(0.85); }
+
+        footer {
+            background: var(--dark); border-top: 1px solid var(--dark-border);
+            color: var(--gray); text-align: center; padding: 2rem; font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-links.active {
+                display: flex; flex-direction: column; position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--dark); padding: 1.5rem 2rem; gap: 1rem;
+            }
+            .hero h1 { font-size: 2.8rem; }
+            .btn-outline { margin-left: 0; margin-top: 1rem; }
+            .hero .btn { display: block; width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">NEXT LEVEL</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tag">Los Angeles • 90047</p>
+            <h1>NEXT <span>LEVEL</span><br>BARBER SHOP</h1>
+            <p>Elevate your style. Premium haircuts, fresh fades, and expert grooming in your neighborhood. Walk-ins welcome.</p>
+            <a href="tel:3239473859" class="btn btn-neon">Call (323) 947-3859</a>
+            <a href="#services" class="btn btn-outline">View Prices</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>SERVICES & <span>PRICES</span></h2>
+            <div class="neon-line"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div><h3>Men's Haircut</h3><p>Full cut with wash and style</p></div>
+                <div class="price">$25</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Skin Fade</h3><p>Clean fade with sharp lineup</p></div>
+                <div class="price">$30</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Beard Trim</h3><p>Shape and line your beard</p></div>
+                <div class="price">$15</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Cut + Beard</h3><p>Full haircut plus beard trim</p></div>
+                <div class="price">$35</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Kids Cut</h3><p>Ages 12 and under</p></div>
+                <div class="price">$18</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Lineup</h3><p>Edge up and shape</p></div>
+                <div class="price">$10</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Hot Towel Shave</h3><p>Classic straight razor shave</p></div>
+                <div class="price">$28</div>
+            </div>
+            <div class="service-card">
+                <div><h3>Designs</h3><p>Custom hair art and patterns</p></div>
+                <div class="price">$40+</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="section-header">
+            <h2>FRESH <span>CUTS</span></h2>
+            <div class="neon-line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">Fade</div>
+            <div class="gallery-item">Taper</div>
+            <div class="gallery-item">Beard</div>
+            <div class="gallery-item">Lineup</div>
+            <div class="gallery-item">Classic</div>
+            <div class="gallery-item">Design</div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>PULL <span style="color:var(--electric)">UP</span></h2>
+        <p>Walk-ins welcome. Call ahead to skip the wait.</p>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="label">Phone</div>
+                <div><a href="tel:3239473859">(323) 947-3859</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="label">Location</div>
+                <div>Los Angeles, CA 90047</div>
+            </div>
+            <div class="contact-item">
+                <div class="label">Hours</div>
+                <div>Mon–Sat: 9AM–7PM</div>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26500.0!2d-118.31!3d33.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c8f3a4e2f13d%3A0x1234567890abcdef!2sLos%20Angeles%2C%20CA%2090047!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Next Level Barber Shop. All rights reserved. | Los Angeles, CA</p>
+    </footer>
+</body>
+</html>
