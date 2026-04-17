@@ -188,7 +188,7 @@
         .hero {
             min-height: 100dvh;
             min-height: 100vh; /* fallback */
-            background: var(--dark);
+            background: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat var(--dark);
             display: -webkit-flex;
             display: flex;
             -webkit-align-items: center;
@@ -205,7 +205,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 60%);
+            background:
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.7) 50%, rgba(10, 10, 10, 0.9) 100%);
             z-index: 0;
         }
 
@@ -635,8 +637,8 @@
         .gallery-grid {
             display: -ms-grid;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 4px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -644,17 +646,21 @@
         .gallery-item {
             aspect-ratio: 1;
             background: linear-gradient(135deg, var(--dark-card), #1a1a1a);
+            background-size: cover;
+            background-position: center;
             display: -webkit-flex;
             display: flex;
-            -webkit-align-items: center;
-            align-items: center;
+            -webkit-align-items: flex-end;
+            align-items: flex-end;
             -webkit-justify-content: center;
             justify-content: center;
+            padding-bottom: 0.75rem;
             font-family: 'Rajdhani', sans-serif;
-            color: var(--gray);
+            color: var(--white);
             font-size: 0.8rem;
             letter-spacing: 1px;
             text-transform: uppercase;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.8);
             -webkit-transition: -webkit-box-shadow 0.35s ease, border-color 0.35s ease;
             transition: box-shadow 0.35s ease, border-color 0.35s ease;
             border: 1px solid transparent;
@@ -874,12 +880,9 @@
             <div class="neon-line"></div>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item reveal" style="transition-delay:.05s">Fade</div>
-            <div class="gallery-item reveal" style="transition-delay:.1s">Taper</div>
-            <div class="gallery-item reveal" style="transition-delay:.15s">Beard</div>
-            <div class="gallery-item reveal" style="transition-delay:.2s">Lineup</div>
-            <div class="gallery-item reveal" style="transition-delay:.25s">Classic</div>
-            <div class="gallery-item reveal" style="transition-delay:.3s">Design</div>
+            <div class="gallery-item reveal" style="transition-delay:.05s; background-image: linear-gradient(0deg, rgba(10,10,10,0.6) 0%, transparent 50%), url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80');">Fade</div>
+            <div class="gallery-item reveal" style="transition-delay:.1s; background-image: linear-gradient(0deg, rgba(10,10,10,0.6) 0%, transparent 50%), url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80');">Taper</div>
+            <div class="gallery-item reveal" style="transition-delay:.15s; background-image: linear-gradient(0deg, rgba(10,10,10,0.6) 0%, transparent 50%), url('https://images.unsplash.com/photo-1584297091722-7c0f7e859b69?auto=format&fit=crop&w=600&q=80');">Lineup</div>
         </div>
     </section>
 
